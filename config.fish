@@ -20,6 +20,8 @@
 # set __fish_git_prompt_char_upstream_ahead '↑'
 # set __fish_git_prompt_char_upstream_behind '↓'
 
+set -U fish_user_paths ~/bin
+
 
 # Prevents the Virtual Env activate.fish from messing with my prompt
 set VIRTUAL_ENV_DISABLE_PROMPT 'yes'
