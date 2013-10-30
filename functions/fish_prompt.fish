@@ -25,7 +25,6 @@ function fish_prompt --description 'Write out the prompt'
     if set -q VIRTUAL_ENV
         set_color $fish_color_match
         echo -n -s "[" (basename "$VIRTUAL_ENV") "] "
-        set_color normal
     end
 
     # CWD
@@ -35,10 +34,10 @@ function fish_prompt --description 'Write out the prompt'
     # Git
     set_color normal
     printf '%s ' (__fish_git_prompt)
-    set_color normal
 
     # Separator
     set_color red
     printf '♿  '
+
     set_color normal
 end
