@@ -1,7 +1,7 @@
 # https://github.com/fish-shell/fish-shell/blob/master/share/functions/__fish_git_prompt.fish
 
 # Status Chars
-set __fish_git_prompt_char_cleanstate '✔'
+set __fish_git_prompt_char_cleanstate '✓ '
 set __fish_git_prompt_char_dirtystate '☂ '
 set __fish_git_prompt_char_invalidstate '✗'
 set __fish_git_prompt_char_stagedstate '•'
