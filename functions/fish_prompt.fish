@@ -43,6 +43,8 @@ function fish_prompt --description 'Write out the prompt'
         case canassa-titans
             set_color --bold red
             printf 'Ƭ'
+        case ithaqua
+            printf '💰'
         case '*'
             printf '␦'
     end
