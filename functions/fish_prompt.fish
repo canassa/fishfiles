@@ -1,7 +1,7 @@
 # https://github.com/fish-shell/fish-shell/blob/master/share/functions/__fish_git_prompt.fish
 
 # Status Chars
-set __fish_git_prompt_char_cleanstate '✔'
+set __fish_git_prompt_char_cleanstate '✓ '
 set __fish_git_prompt_char_dirtystate '☂ '
 set __fish_git_prompt_char_invalidstate '✗'
 set __fish_git_prompt_char_stagedstate '•'
@@ -37,7 +37,17 @@ function fish_prompt --description 'Write out the prompt'
 
     # Separator
     set_color red
-    printf '♿  '
+    switch (hostname)
+        case ghadamon
+            printf 'g̵̡͢h̶ada͞m̡o͜n'
+        case canassa-titans
+            set_color --bold red
+            printf 'Ƭ'
+        case '*'
+            printf '␦'
+    end
+
+    printf '  '
 
     set_color normal
 end
