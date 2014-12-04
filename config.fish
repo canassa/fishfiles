@@ -1,4 +1,4 @@
-set -U fish_user_paths ~/bin
+set -U fish_user_paths ~/bin ~/.local/bin
 
 # Initialize rbenv
 if test -d ~/.rbenv
