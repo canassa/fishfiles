@@ -40,9 +40,8 @@ function fish_prompt --description 'Write out the prompt'
     switch (hostname)
         case ghadamon
             printf 'g̵̡͢h̶ada͞m̡o͜n'
-        case canassa-titans
-            set_color --bold red
-            printf 'Ƭ'
+        case SendClouds-MacBook-Pro.local
+            printf '☁️'
         case ithaqua
             printf '💰'
         case '*'
