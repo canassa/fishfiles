@@ -6,6 +6,9 @@ if test -d ~/.rbenv
     . (rbenv init -|psub)
 end
 
+# Initialize pyenv
+status --is-interactive; and . (pyenv init -|psub)
+
 # Prevents the Virtual Env activate.fish from messing with my prompt
 set VIRTUAL_ENV_DISABLE_PROMPT 'yes'
 
