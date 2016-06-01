@@ -1,9 +1,14 @@
-set -U fish_user_paths ~/bin ~/.local/bin
+if test -d ~/bin
+    set -U fish_user_paths ~/bin $fish_user_paths
+end
 
-# Initialize rbenv
-if test -d ~/.rbenv
-    set fish_user_paths ~/.rbenv/bin $fish_user_paths
-    . (rbenv init -|psub)
+if test -d ~/.local/bin
+    set -U fish_user_paths ~/.local/bin $fish_user_paths
+end
+
+# Homebrew paths
+if test -d /usr/local/sbin
+    set -U fish_user_paths /usr/local/sbin $fish_user_paths
 end
 
 # Initialize pyenv
