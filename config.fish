@@ -26,4 +26,14 @@ if test (uname) = Darwin
     set -x LC_MONETARY en_US.UTF-8
     set -x LC_NUMERIC en_US.UTF-8
     set -x LC_TIME en_US.UTF-8
+
+    # set -x LANG C
+    # set -x LC_COLLATE C
+    # set -x LC_CTYPE C
+    # set -x LC_MESSAGES C
+    # set -x LC_MONETARY C
+    # set -x LC_NUMERIC C
+    # set -x LC_TIME C
 end
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
