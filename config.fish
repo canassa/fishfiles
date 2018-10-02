@@ -12,10 +12,21 @@ if test -d /usr/local/sbin
 end
 
 # Initialize pyenv
-status --is-interactive; and . (pyenv init -|psub)
+if test -e /usr/local/bin/pyenv
+    status --is-interactive; and . (pyenv init -|psub)
+end
+
+if test -e ~/.config/fish/secrets.fish
+    source ~/.config/fish/secrets.fish
+end
 
 # Prevents the Virtual Env activate.fish from messing with my prompt
 set VIRTUAL_ENV_DISABLE_PROMPT 'yes'
+
+# New10 stuff
+set -x AWS_PROFILE new10-dev
+set -x AWS_DEFAULT_REGION eu-west-1
+set -x AWS_SDK_LOAD_CONFIG 1
 
 # Fix OS X broken locales
 if test (uname) = Darwin
