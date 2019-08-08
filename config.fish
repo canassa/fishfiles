@@ -28,6 +28,8 @@ set -x AWS_PROFILE new10-dev
 set -x AWS_DEFAULT_REGION eu-west-1
 set -x AWS_SDK_LOAD_CONFIG 1
 
+set -x -U GOPATH ~/code
+
 # Fix OS X broken locales
 if test (uname) = Darwin
     set -x LANG en_US.UTF-8
@@ -47,4 +49,13 @@ if test (uname) = Darwin
     # set -x LC_TIME C
 end
 
+# Fix psycopg installtion
+# https://stackoverflow.com/a/39244687/360829
+set -gx LDFLAGS "-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib"
+
+# Python libarchive
+set -gx LA_LIBRARY_FILEPATH "/usr/local/Cellar/libarchive/3.3.3/lib/libarchive.dylib"
+
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
+set -g fish_user_paths "/usr/local/opt/terraform@0.11/bin" $fish_user_paths
