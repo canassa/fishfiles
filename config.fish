@@ -1,20 +1,35 @@
 if test -d ~/bin
-    set -U fish_user_paths ~/bin $fish_user_paths
+    set PATH ~/bin $PATH
 end
 
 if test -d ~/.local/bin
-    set -U fish_user_paths ~/.local/bin $fish_user_paths
+    set PATH ~/.local/bin $PATH
 end
 
-# Homebrew paths
-if test -d /usr/local/sbin
-    set -U fish_user_paths /usr/local/sbin $fish_user_paths
+# Go binaries
+if test -d ~/.cargo/bin
+    set PATH ~/.cargo/bin $PATH
 end
+
+# Cargo binaries
+if test -d ~/code/bin
+    set PATH ~/code/bin $PATH
+end
+
 
 # Initialize pyenv
 if test -e /usr/local/bin/pyenv
     status --is-interactive; and . (pyenv init -|psub)
 end
+
+# jenv
+if test -e ~/.jenv/bin
+    set PATH ~/.jenv/bin $PATH
+end
+
+# if test -e ~/anaconda3/bin
+#     set -U fish_user_paths $fish_user_paths ~/anaconda3/bin
+# end
 
 if test -e ~/.config/fish/secrets.fish
     source ~/.config/fish/secrets.fish
@@ -24,11 +39,11 @@ end
 set VIRTUAL_ENV_DISABLE_PROMPT 'yes'
 
 # New10 stuff
-set -x AWS_PROFILE new10-dev
-set -x AWS_DEFAULT_REGION eu-west-1
-set -x AWS_SDK_LOAD_CONFIG 1
+set AWS_PROFILE new10-dev
+set AWS_DEFAULT_REGION eu-west-1
+set AWS_SDK_LOAD_CONFIG 1
 
-set -x -U GOPATH ~/code
+set -gx GOPATH ~/code
 
 # Fix OS X broken locales
 if test (uname) = Darwin
@@ -49,13 +64,18 @@ if test (uname) = Darwin
     # set -x LC_TIME C
 end
 
-# Fix psycopg installtion
-# https://stackoverflow.com/a/39244687/360829
-set -gx LDFLAGS "-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib"
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
+
+set -gx CLOUDSDK_PYTHON python3
+
+# Required for psycopg, libxml, pyenv and gevent
+set -gx LDFLAGS -L/usr/local/opt/openssl@1.1/lib -L/usr/local/opt/libevent/lib -L/usr/local/opt/libxml2/lib
+set -gx CFLAGS -I/usr/local/opt/openssl@1.1/include -I/usr/local/opt/libevent/include -I/usr/local/opt/libxml2/include
 
 # Python libarchive
-set -gx LA_LIBRARY_FILEPATH "/usr/local/Cellar/libarchive/3.3.3/lib/libarchive.dylib"
+set LA_LIBRARY_FILEPATH "/usr/local/Cellar/libarchive/3.3.3/lib/libarchive.dylib"
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
-set -g fish_user_paths "/usr/local/opt/terraform@0.11/bin" $fish_user_paths
+# set PATH "/usr/local/opt/terraform@0.11/bin" $PATH
+set PATH "/usr/local/opt/gettext/bin" $PATH
